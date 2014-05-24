@@ -7,7 +7,7 @@ class PatronTableViewGenerator(viewgenerator.TableViewGenerator):
     fields = [
         viewgenerator.ViewField("name"),
         viewgenerator.ViewField("phone"),
-        viewgenerator.ViewField("address"),
+        viewgenerator.ViewField("email"),
     ]
 
 
@@ -16,7 +16,7 @@ class PatronDetailViewGenerator(viewgenerator.EditableDetailViewGenerator):
     fields = [
         viewgenerator.ViewField("name"),
         viewgenerator.ViewField("phone"),
-        viewgenerator.ViewField("address"),
+        viewgenerator.ViewField("email"),
     ]
 
 

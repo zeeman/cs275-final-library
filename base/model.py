@@ -64,16 +64,24 @@ class Model(object):
         pass
 
     def identity(self):
-        """
+        """Allows a saved record to be uniquely identified for future retrieval.
+
         Returns: a string uniquely identifying the record, if it exists in the
             database. If the record has not been saved, None.
         """
         pass
 
     def get(self, identity):
-        """
+        """Retrieves a record based on the value returned by .identity().
+
         Args:
             identity: Should be a value obtained by running the identity method
                 on a Model.
         """
         pass
+
+
+class QueryBuilder(object):
+    """A collection of helper functions to assist in SQL query generation.
+    """
+    pass
