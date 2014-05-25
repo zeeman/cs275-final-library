@@ -7,13 +7,13 @@ create table `library`.`Patron` (
   -- max email len = 254 (http://stackoverflow.com/a/574698/700375)
   `email`           varchar(254)    null default null,
   `phone`           varchar(25)     null default null,
-  `date_of_birth`   date            null default null,
+--`date_of_birth`   date            null default null,
   -- it would be great if MySQL had CHECK constraints so I could verify no user
   -- has a password without a salt... too bad we're using MySQL like a bunch of
   -- yammering dogs on a speedboat, instead of PostgreSQL like the advanced,
   -- spacefaring civ we truly are
-  `password`        char(64)        null default null,
-  `salt`            char(16)        null default null,
+--`password`        char(64)        null default null,
+--`salt`            char(16)        null default null,
 
 constraint "Patron_pk"
     primary key (`patron_id`)
