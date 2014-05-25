@@ -1,0 +1,10 @@
+SETTINGS = {
+    'DB_CONFIG': {
+        'db': FIXME,
+        'user': FIXME,
+        'passwd': FIXME,
+        'host': 127.0.0.1,
+        'port': 3307},
+    'DEBUG': True,
+    'SECRET_KEY': FIXME,
+}

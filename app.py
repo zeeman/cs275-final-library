@@ -24,13 +24,19 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-from flask import Flask
-app = Flask(__name__)
+import flask
+import os
+import oursql
 
-@app.route("/")
-@app.route("/n/<name>")
-def hello(name="World"):
-    return "Hello {}!".format(name)
+
+from core.settings import SETTINGS
+
+
+app = flask.Flask(__name__)
+
+app.config.update(SETTINGS)
+app.config.from_envvar('LOCAL_SETTINGS', silent=True)
+
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

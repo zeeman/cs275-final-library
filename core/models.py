@@ -1,4 +1,5 @@
 from base.model import Model
+from utils import db
 
 
 class Patron(Model):
@@ -35,22 +36,38 @@ class Patron(Model):
         """Update the database with the data from the Model. If the entity is
         new, INSERT. If the entity is already stored, UPDATE.
         """
+        if not self.validate():
+            raise Exception("The name field is required.")
+
+        connection = db.get_db()
+        cursor = connection.cursor()
         if self.identity():
             # the record exists -> UPDATE
             sql = 'update `Patron` set `name` = ?, `phone` = ?, `email` = ? ' \
                   'where `patron_id` = ?'
             data = self.name, self.phone, self.email, self.patron_id
+            cursor.execute(sql, data)
         else:
             # the record does not exist -> INSERT
             sql = 'insert into `Patron` set `name` = ?, `phone` = ?, ' \
                   '`email` = ?'
             data = self.name, self.phone, self.email
+            cursor.execute(sql, data)
 
     def delete(self):
-        """If the entity has been saved, DELETE it. If not, ???
+        """If the entity has been saved, DELETE it from the database. If not, do
+        nothing.
+
+        If the object existed, its patron_id is set to None to signify that it
+        has not been saved.
         """
-        sql = 'delete from `Patron` where `patron_id` = ?'
-        pass
+        if self.identity():
+            connection = db.get_db()
+            cursor = connection.cursor()
+            sql = 'delete from `Patron` where `patron_id` = ?'
+            data = self.patron_id,
+            cursor.execute(sql, data)
+            self.patron_id = None
 
     def identity(self):
         """

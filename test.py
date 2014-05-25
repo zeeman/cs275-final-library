@@ -1,5 +1,5 @@
 from base import viewgenerator
-from models import Patron
+from core.models import Patron
 
 
 class PatronTableViewGenerator(viewgenerator.TableViewGenerator):
@@ -21,8 +21,8 @@ class PatronDetailViewGenerator(viewgenerator.EditableDetailViewGenerator):
 
 
 patrons = [
-    Patron("Jane Doe", "555 555 0155", "123 Fake St"),
-    Patron("John Doe", "555 555 0156", "124 Fake St")
+    Patron("Jane Doe", "555 555 0155", "jane.doe@example.com"),
+    Patron("John Doe", "555 555 0156", "john.doe@example.net")
 ]
 
 pvg = PatronTableViewGenerator(patrons)
